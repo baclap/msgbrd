@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/thread/new', 'ThreadController@showForm')->name('thread_form');
+Route::post('/thread', 'ThreadController@create')->name('create_thread');
