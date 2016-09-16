@@ -48,7 +48,7 @@ return [
 
         'sqlite' => [
             'driver' => 'sqlite',
-            'database' => __DIR__ . '/../storage/database.sqlite',
+            'database' => storage_path() . '/database.sqlite',
             'prefix' => '',
         ],
 
