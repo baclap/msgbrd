@@ -25,6 +25,20 @@ class ThreadController extends Controller
             'title' => $title
         ]);
         $user->threads()->save($thread);
-        return $thread;
+        return redirect()->route('thread_detail', ['id' => $thread->id]);
+    }
+
+    public function showThread($id)
+    {
+        $thread = Thread::where('id', $id)
+            ->with('author')
+            ->get()
+            ->first();
+        if (!$thread) {
+            abort(404);
+        }
+        return view('thread/detail', [
+            'thread' => $thread->toArray()
+        ]);
     }
 }
