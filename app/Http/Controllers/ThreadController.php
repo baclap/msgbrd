@@ -18,7 +18,6 @@ class ThreadController extends Controller
     public function create(Request $req)
     {
         $user = Auth::user();
-        // dd($user);
         $title = $req->get('title');
         $body = $req->get('body');
         $thread = new Thread([
