@@ -166,6 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
+        TwigBridge\ServiceProvider::class,
 
         //
 
@@ -225,6 +226,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        // Custom stuff
+        'Twig' => TwigBridge\Facade\Twig::class,
     ],
 
 ];
