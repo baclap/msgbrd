@@ -31,7 +31,7 @@ class ThreadController extends Controller
     public function showThread($id)
     {
         $thread = Thread::where('id', $id)
-            ->with('author')
+            ->with('author', 'comments')
             ->get()
             ->first();
         if (!$thread) {
