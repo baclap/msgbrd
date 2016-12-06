@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 use App\Thread;
+use View;
 
 class ThreadController extends Controller
 {
     public function showForm()
     {
-        return view('thread/form');
+        return View::make('thread/form');
     }
 
     public function create(Request $req)
@@ -37,8 +38,13 @@ class ThreadController extends Controller
         if (!$thread) {
             abort(404);
         }
-        return view('thread/detail', [
-            'thread' => $thread->toArray()
+        // Twig Template version
+        return View::make('thread/detail', [
+          'thread' => $thread
         ]);
+        // Default Blade Template version
+        // return view('thread/detail', [
+        //     'thread' => $thread->toArray()
+        // ]);
     }
 }
