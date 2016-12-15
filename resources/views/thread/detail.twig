@@ -1,3 +1,22 @@
 <h1>{{ thread.title }}</h1>
 <small>{{ thread.author.name }}</small>
 <p>{{ thread.body }}</p>
+<a href="{{ route('dashboard')}}">Go back to Dashboard</a>
+
+<h2>Comments</h2>
+{% if thread.comments is not empty %}
+  {% for comment in thread.comments %}
+    <div>
+      <small>{{ comment.author.name }}</small>
+      <p>{{ comment.body }}</p>
+    </div>
+  {% endfor %}
+{% else %}
+<h3>There are currently no comments</h3>
+{% endif %}
+
+<form action="{{ route('create_comment', { 'id': thread }) }}" method="POST">
+    {{ csrf_field() }}
+    <textarea name="body">Write a comment...</textarea><br>
+    <button type="submit">Submit</button>
+</form>

@@ -32,7 +32,7 @@ class ThreadController extends Controller
     public function showThread($id)
     {
         $thread = Thread::where('id', $id)
-            ->with('author')
+            ->with('author', 'comments')
             ->get()
             ->first();
         if (!$thread) {
@@ -40,7 +40,7 @@ class ThreadController extends Controller
         }
         // Twig Template version
         return View::make('thread/detail', [
-          'thread' => $thread
+          'thread' => $thread,
         ]);
         // Default Blade Template version
         // return view('thread/detail', [
