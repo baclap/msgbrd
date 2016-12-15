@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DatabaseSeeder extends Seeder
+class AdminUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AdminUserSeeder::class);
-        $this->call(CommentsTableSeeder::class);
+        factory(App\User::class)->create([
+        	'email' => 'admin@test.com'
+        ]);
     }
 }
