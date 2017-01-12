@@ -15,3 +15,4 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 Route::get('/thread/{id}', 'ThreadController@showThread')->name('thread_detail');
+Route::get('/user/{id}', 'UserController@showProfile')->name('user_profile');

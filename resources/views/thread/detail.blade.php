@@ -1,5 +1,5 @@
 <h1>Thread Title: {{ $thread['title'] }}</h1>
-<small>Author: {{ $thread['author']['name'] }}</small><br>
+<small>Author: <a href="{{ route('user_profile', ['id' => $thread['author']['id']]) }}">{{ $thread['author']['name'] }}</a></small><br>
 <small>Date: {{ Carbon\Carbon::parse($thread['created_at'])->format('m-d-Y @h:i:sA') }}</small>
 <p>Body: {{ $thread['body'] }}</p>
 <p><a href="{{ route('dashboard') }}">Go Back To Dashboard</a></p>
