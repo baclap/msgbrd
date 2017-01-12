@@ -5,16 +5,20 @@
 <h1>Username: {{ profile.name }}</h1>
 <small>Joined: {{ profile.created_at|date("m/d/Y") }}</small>
 
-<h2> Recent threads</h2>
-<ol>
-{% for thread in profile.threads %}
-    <li><a href="{{  route('thread_detail', { 'id': thread }) }}">{{ thread.title }}</a></li>
-{% endfor %}
-</ol>
+{% if profile.threads is not empty %}
+    <h2> Recent threads</h2>
+    <ol>
+        {% for thread in profile.threads %}
+            <li><a href="{{  route('thread_detail', { 'id': thread }) }}">{{ thread.title }}</a></li>
+        {% endfor %}
+    </ol>
+{%  endif %}
 
-<h2> Recent threads</h2>
-<ol>
-    {% for comment in profile.comments %}
-        <li><blockquote>{{  comment.body }}</blockquote> in <a href="{{  route('thread_detail', { 'id': comment.thread }) }}">{{ comment.thread.title }}</a></li>
-    {% endfor %}
-</ol>
+{% if profile.comments is not empty %}
+    <h2> Recent comments</h2>
+    <ol>
+        {% for comment in profile.comments %}
+            <li><blockquote>{{  comment.body }}</blockquote> in <a href="{{  route('thread_detail', { 'id': comment.thread }) }}">{{ comment.thread.title }}</a></li>
+        {% endfor %}
+    </ol>
+{% endif %}
