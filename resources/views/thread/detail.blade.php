@@ -1,12 +1,15 @@
-<h1>{{ $thread['title'] }}</h1>
-<small>{{ $thread['author']['name'] }}</small>
-<p>{{ $thread['body'] }}</p>
+<h1>Thread Title: {{ $thread['title'] }}</h1>
+<small>Author: {{ $thread['author']['name'] }}</small><br>
+<small>Date: {{ Carbon\Carbon::parse($thread['created_at'])->format('m-d-Y @h:i:sA') }}</small>
+<p>Body: {{ $thread['body'] }}</p>
 <p><a href="{{ route('dashboard') }}">Go Back To Dashboard</a></p>
 
 <hr>
 
 @foreach ($thread['comments'] as $comment)
 <p>{{ $comment['body'] }}</p>
+<small>Author: {{ $comment['author']['name'] }}</small><br>
+<small>Date: {{ Carbon\Carbon::parse($comment['created_at'])->format('m-d-Y @h:i:sA') }}</small>
 @endforeach
 
 <hr>
