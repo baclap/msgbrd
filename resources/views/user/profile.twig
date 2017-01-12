@@ -1,0 +1,20 @@
+@extends('layouts.app')
+
+@section('content')
+
+<h1>Username: {{ profile.name }}</h1>
+<small>Joined: {{ profile.created_at|date("m/d/Y") }}</small>
+
+<h2> Recent threads</h2>
+<ol>
+{% for thread in profile.threads %}
+    <li><a href="{{  route('thread_detail', { 'id': thread }) }}">{{ thread.title }}</a></li>
+{% endfor %}
+</ol>
+
+<h2> Recent threads</h2>
+<ol>
+    {% for comment in profile.comments %}
+        <li><blockquote>{{  comment.body }}</blockquote> in <a href="{{  route('thread_detail', { 'id': comment.thread }) }}">{{ comment.thread.title }}</a></li>
+    {% endfor %}
+</ol>
