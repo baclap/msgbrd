@@ -1,5 +1,5 @@
-<h1>{{ thread.title }}</h1>
-<small>{{ thread.author.name }}</small>
+<h1>Thread Title: {{ thread.title }}</h1>
+<small>By: {{ thread.author.name }} on {{  thread.created_at|date("m/d/Y") }}</small>
 <p>{{ thread.body }}</p>
 <a href="{{ route('dashboard')}}">Go back to Dashboard</a>
 
@@ -7,7 +7,7 @@
 {% if thread.comments is not empty %}
   {% for comment in thread.comments %}
     <div>
-      <small>{{ comment.author.name }}</small>
+      <small>Reply by: {{ comment.author.name }} on {{  comment.created_at|date("m/d/Y") }}</small>
       <p>{{ comment.body }}</p>
     </div>
   {% endfor %}
